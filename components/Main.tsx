@@ -1,18 +1,40 @@
-import CreatePostButton from  './CreatPostButton'
+import { useEffect, useState } from 'react'
+import { DataStore } from 'aws-amplify'
+import { formatDistance } from 'date-fns'
+import { Post as PostModel } from '../src/models'
+import CreatePostButton from './CreatPostButton'
 import Post from './Post'
 
 const Main: React.FC = () => {
+  const [posts, setPost] = useState<PostModel[]>([])
+
+  const fetchPosts = async () => {
+    const Data = await DataStore.query(PostModel)
+    setPost(Data)
+  }
+
+  useEffect(() => {
+    fetchPosts()
+  }, [posts])
+
   return (
-    <div className="mx-auto max-w-[800px]">
-		<CreatePostButton />
-      <Post
-        time="2 days"
-		image="https://images.pexels.com/photos/12172608/pexels-photo-12172608.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-        community="javascript"
-        username="robin9079#"
-        content="One core difference between these two types of functions is whether or not they have side effects.In this article, you will learn what side effects are and we'll discuss the differences between pure and impure functions.Without any further ado, let's get started with side effects."
-        title="Pure Component vs impure function "
-      />
+    <div className="mx-auto h-[calc(100vh-64px)] max-w-[800px] overflow-x-scroll scrollbar-hide">
+      <CreatePostButton />
+      <div>
+        {posts.map((item) => (
+          <Post
+            key={item.id}
+            title={item.title}
+            username={item.user}
+            community={item.community}
+            content={item.text}
+			image={item.media}
+            time={formatDistance(new Date(item.createdAt), new Date(), {
+              addSuffix: true,
+            })}
+          />
+        ))}
+      </div>
     </div>
   )
 }

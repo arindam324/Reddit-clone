@@ -1,0 +1,11 @@
+type Post @model @auth(rules: [{allow: public}, {allow: private, operations: [read, create]}, {allow: owner}]) {
+  id: ID!
+  title: String!
+  text: String
+  media: String
+  user: String
+  community: String
+  UpVote: Int
+  DownVote: Int
+}
+ 

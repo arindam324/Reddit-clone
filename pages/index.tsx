@@ -7,13 +7,13 @@ const Home: NextPage = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Head>
-        <title>Create Next App</title>
+        <title>Reddit-clone</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-	  <main className="w-full min-h-screen bg-gray-100">
-			<Header/>
-			<Main />
-		</main>		
+      <main className="w-full min-h-screen bg-gray-100">
+        <Header />
+        <Main />
+      </main>
     </div>
   )
 }
