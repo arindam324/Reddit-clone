@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { formatDistance } from 'date-fns'
 import { BiUpArrow, BiDownArrow } from 'react-icons/bi'
 
 interface PostProps {
@@ -6,7 +7,7 @@ interface PostProps {
   username: string
   time: string
   title: string
-	content:string
+  content: string
   image?: string
 }
 
@@ -22,20 +23,27 @@ const Post: React.FC<PostProps> = ({
     <article className="my-4 w-[800px] rounded-md bg-white p-4 shadow-lg">
       <p>
         <span className="font-semibold">{community}</span> is posted by{' '}
-        <span className="font-semibold">{username}</span> {time}
+        <span className="font-semibold">{username}</span>{' '}
+        {formatDistance(new Date(time), new Date(), { addSuffix: true })}
       </p>
       <div className="flex items-center">
         <div className="mr-3">
-          <BiUpArrow className="text-2xl cursor-pointer" />
-          <BiDownArrow className="text-2xl cursor-pointer" />
+          <BiUpArrow className="cursor-pointer text-2xl" />
+          <BiDownArrow className="cursor-pointer text-2xl" />
         </div>
         <div>
           <h2 className="py-2 text-2xl font-semibold">{title}</h2>
           <p className="text-sm leading-6">{content}</p>
-	  
-        {image && (
-          <Image src={image} objectFit='cover' className="rounded-md" width={650} height={300} />
-        )}
+
+          {image && (
+            <Image
+              src={image}
+              objectFit="cover"
+              className="rounded-md"
+              width={650}
+              height={300}
+            />
+          )}
         </div>
       </div>
     </article>

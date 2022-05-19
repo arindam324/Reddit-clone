@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { DataStore } from 'aws-amplify'
+import { DataStore,Predicates, SortDirection } from 'aws-amplify'
 import { formatDistance } from 'date-fns'
 import { Post as PostModel } from '../src/models'
 import CreatePostButton from './CreatPostButton'
@@ -9,7 +9,9 @@ const Main: React.FC = () => {
   const [posts, setPost] = useState<PostModel[]>([])
 
   const fetchPosts = async () => {
-    const Data = await DataStore.query(PostModel)
+    const Data = await DataStore.query(PostModel, Predicates.ALL, {
+      sort: (s) => s.createdAt(SortDirection.DESCENDING),
+    })
     setPost(Data)
   }
 
@@ -28,10 +30,8 @@ const Main: React.FC = () => {
             username={item.user}
             community={item.community}
             content={item.text}
-			image={item.media}
-            time={formatDistance(new Date(item.createdAt), new Date(), {
-              addSuffix: true,
-            })}
+            image={item.media}
+            time={item.createdAt}
           />
         ))}
       </div>
