@@ -65,6 +65,7 @@ const Submit: NextPage = () => {
           text: content,
         })
       )
+		console.log(data)
     }
     router.push('/')
   }

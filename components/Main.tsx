@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { DataStore,Predicates, SortDirection } from 'aws-amplify'
-import { formatDistance } from 'date-fns'
 import { Post as PostModel } from '../src/models'
 import CreatePostButton from './CreatPostButton'
 import Post from './Post'
@@ -30,7 +29,7 @@ const Main: React.FC = () => {
             username={item.user}
             community={item.community}
             content={item.text}
-            image={item.media}
+			image={item.media}
             time={item.createdAt}
           />
         ))}
