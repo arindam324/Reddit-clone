@@ -3,7 +3,7 @@
   "serviceConfiguration": {
     "apiName": "redditclone",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "/tmp/amplify-64195e3d-f5e2-426c-b6a1-43285d56c60a/amplify/backend/api/redditclone/schema.graphql",
+    "gqlSchemaPath": "/tmp/amplify-d895a4df-b695-4cac-991a-1cdb6a20e122/amplify/backend/api/redditclone/schema.graphql",
     "defaultAuthType": {
       "mode": "API_KEY",
       "keyDescription": "api key description",

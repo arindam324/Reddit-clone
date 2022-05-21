@@ -13,8 +13,8 @@ export declare class Post {
   readonly title: string;
   readonly text?: string | null;
   readonly media?: string | null;
-  readonly user?: string | null;
-  readonly community?: string | null;
+  readonly user: string;
+  readonly community: string;
   readonly UpVote?: number | null;
   readonly DownVote?: number | null;
   readonly createdAt?: string | null;

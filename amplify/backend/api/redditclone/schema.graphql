@@ -3,8 +3,8 @@ type Post @model @auth(rules: [{allow: public}, {allow: private, operations: [re
   title: String!
   text: String
   media: String
-  user: String
-  community: String
+  user: String!
+  community: String!
   UpVote: Int
   DownVote: Int
 }

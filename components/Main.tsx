@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { DataStore,Predicates, SortDirection } from 'aws-amplify'
+import { DataStore, Predicates, SortDirection } from 'aws-amplify'
 import { Post as PostModel } from '../src/models'
 import CreatePostButton from './CreatPostButton'
 import Post from './Post'
@@ -28,9 +28,9 @@ const Main: React.FC = () => {
             title={item.title}
             username={item.user}
             community={item.community}
-            content={item.text}
-			image={item.media}
-            time={item.createdAt}
+            content={item.text ? item.text : undefined}
+            image={item.media ? item.media : undefined}
+            time={item.createdAt ? item.createdAt : undefined}
           />
         ))}
       </div>

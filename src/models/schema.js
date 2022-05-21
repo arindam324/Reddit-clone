@@ -35,14 +35,14 @@ export const schema = {
                     "name": "user",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "community": {
                     "name": "community",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "UpVote": {
@@ -123,5 +123,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "77ecf51a81587ae28e3c97e045f6c9b3"
+    "version": "3a66c3a4c275d77155272c7b616968bf"
 };
